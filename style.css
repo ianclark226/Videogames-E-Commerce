@@ -63,3 +63,41 @@ body {
 
 }
 
+.hero {
+    min-height: calc(100vh - 60px);
+    background: url("") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner {
+    text-align: center;
+    background: rgba(255,255,255,0.8);
+    display: inline-block;
+    padding: 2rem;
+}
+
+.banner-title {
+    font-size: 3.4rem;
+    text-transform: uppercase;
+    letter-spacing: var(--primarySpacing);
+    margin-bottom: 3rem;
+}
+
+.banner-btn {
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    letter-spacing: var(--primarySpacing);
+    font-size: 1rem;
+    background: var(--primaryColor);
+    color: var(--primaryBlack);
+    border: 1px solid var(--primaryTransition);
+    transition: var(--primaryTransition);
+    cursor: pointer;
+}
+
+.banner-btn:hover {
+    background: transparent;
+    color: var(--primaryColor);
+}

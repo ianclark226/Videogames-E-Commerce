@@ -7,8 +7,11 @@ const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(". cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
+const btns = document.querySelectorAll(".bag-btn");
 
 let car = [];
+
+let buttonsDOM = [];
 
 class Products{
 async getProducts(){
@@ -50,11 +53,47 @@ displayProducts(products){
     product.innerHTML = result;
 
 }
+getBagButtons() {
+    const buttons = [...document.querySelectorAll(".bag-btn")];
+    buttonsDOM = buttons;
+    buttons.forEach(button => {
+        let id = button.dataset.id;
+        let inCart = cart.find(item => item.id === id);
+        if(inCart) {
+            button.innerText = "IN CART";
+            button.disable = true
+        } else {
+            button.addEventListener("click", e => {
+                e.target.innerText = "IN CART";
+                e.target.disabled = true;
+
+                let cartItem = {...Storage.getProduct(id),
+                amount: 1}
+
+                cart = [...cart, cartItem];
+
+                Storage.saveCart(cart);
+
+                this.setCartValues(cart);
+            })
+        }
+    })
+}
+setCartValue(cart){
+    
+}
 }
 
 class Storage {
 static saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
+}
+static getProducts(id) {
+    let products = JSON.parse(localStorage.getItem('products'));
+    return products.find(product => product.id === id);
+}
+static saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
 }
 }
 
@@ -65,5 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     products.getProducts().then(products => {
         ui.displayProducts(products);
         Storage.saveProducts(products);
+    }).then(() => {
+        ui.getBagButtons();
     });
 });

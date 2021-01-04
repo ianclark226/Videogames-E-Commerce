@@ -1,0 +1,68 @@
+{
+    "items": [
+        {
+            "sys": { "id" : "1" },
+            "fields": {
+                "title": "Super Mario 64",
+                "price": 12,
+                "image": { "fields": { "file": { "url": "./images/game-1.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "2" },
+            "fields": {
+                "title": "Super Mario Sunshine",
+                "price": 18,
+                "image": { "fields": { "file": { "url": "./images/game-2.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "3" },
+            "fields": {
+                "title": "Super Mario Galaxy",
+                "price": 24,
+                "image": { "fields": { "file": { "url": "./images/game-3.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "4" },
+            "fields": {
+                "title": "Super Mario Galaxy 2",
+                "price": 27,
+                "image": { "fields": { "file": { "url": "./images/game-4.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "5" },
+            "fields": {
+                "title": "Luigi's Mansion",
+                "price": 25,
+                "image": { "fields": { "file": { "url": "./images/game-5.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "6" },
+            "fields": {
+                "title": "Wario World",
+                "price": 6,
+                "image": { "fields": { "file": { "url": "./images/game-6.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "7" },
+            "fields": {
+                "title": "Paper Mario",
+                "price": 20,
+                "image": { "fields": { "file": { "url": "./images/game-7.jpeg"} } }
+            }
+        },
+        {
+            "sys": { "id" : "8" },
+            "fields": {
+                "title": "Paper Mario The Thousand-Year Door",
+                "price": 30,
+                "image": { "fields": { "file": { "url": "./images/game-8.jpeg"} } }
+            }
+        }
+    ]
+}

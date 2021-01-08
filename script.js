@@ -1,24 +1,36 @@
+const client = contentful.createClient({
+    space: "d4x5eg26gbkw",
+    accessToken: "MZ1oFZLivtYCYtAsvKdXRMk0PgDwC7tX4QSArZhCLEc",
+    
+  });
+
+    console.log(client);
 const cartBtn = document.querySelector(".cart-btn");
 const closeCartBtn = document.querySelector(".close-cart");
 const clearCartBtn = document.querySelector(".clear-cart");
 const cartDOM = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
 const cartItems = document.querySelector(".cart-items");
-const cartTotal = document.querySelector(". cart-total");
+const cartTotal = document.querySelector(".cart-total");
 const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
 const btns = document.querySelectorAll(".bag-btn");
 
-let car = [];
+let cart = [];
 
 let buttonsDOM = [];
 
 class Products{
 async getProducts(){
     try {
-        let result = await fetch('videogames.json');
-        let data = await result.json();
-        let products = data.items;
+        // let result = await fetch('videogames.json');
+        // let data = await result.json();
+        let contentful = await client.getEntries({
+            content_type: "videoGameProducts"
+        });
+        console.log(contentful.items);
+
+        let products = contentful.items;
         products = products.map(item => {
             const {title,price} = item.fields;
             const {id} = item.sys
@@ -40,7 +52,7 @@ displayProducts(products){
         result +=`
         <article class="product">
         <div class="img-container">
-            <img src=${product.image} alt="" class="" />
+            <img src=${product.image} alt="product" class="product-img" />
             <button class="bag-btn" data-id=${product.id}>
                 <i class="fas fa-shopping-cart">Add To Bag</i>
             </button>
@@ -50,7 +62,7 @@ displayProducts(products){
     </article>
         `;
     });
-    product.innerHTML = result;
+    productsDOM.innerHTML = result;
 
 }
 getBagButtons() {
@@ -83,7 +95,7 @@ getBagButtons() {
         }
     })
 }
-setCartValue(cart){
+setCartValues(cart){
     let tempTotal = 0;
     let itemsTotal = 0;
     cart.map(item => {
@@ -91,14 +103,14 @@ setCartValue(cart){
         itemsTotal += item.amount
     })
     cartTotal.innerText = parseFloat(tempTotal.toFixed(2))
-    cartItems.innerText = item;
+    cartItems.innerText = itemsTotal;
 }
 addCartItem(item) {
     const div = document.createElement('div');
     div.classList.add('cart-item');
     div.innerHTML = `
     <div class="cart-item">
-                <img src="" alt="">
+                <img src=${item.image}"" alt="product" />
             </div>
             <h4>${item.title}</h4>
             <h5>${item.price}</h5>
@@ -120,7 +132,7 @@ showCart() {
 setupApp(){
     cart = Storage.getCart();
     this.setCartValues(cart);
-    this.populate(cart);
+    this.populateCart(cart);
     cartBtn.addEventListener('click', this.showCart)
     closeCartBtn.addEventListener('click', this.hideCart);
 }
@@ -194,33 +206,35 @@ getSingleButton(id) {
 }
 
 class Storage {
-static saveProducts(products) {
-    localStorage.setItem("products", JSON.stringify(products));
-}
-static getProducts(id) {
-    let products = JSON.parse(localStorage.getItem('products'));
-    return products.find(product => product.id === id);
-}
-static saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-static getCart(){
-    return localStorage.getItem('cart')?JSON.parse
-    (localStorage.getItem('cart')):[]
-}
-}
+    static saveProducts(products) {
+        localStorage.setItem("products", JSON.stringify(products));
+    }
+    static getProducts(id) {
+        let products = JSON.parse(localStorage.getItem('products'));
+        return products.find(product => product.id === id);
+    }
+    static saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    static getCart(){
+        return localStorage.getItem('cart')?JSON.parse
+        (localStorage.getItem('cart')):[]
+    }
+    }
 
 document.addEventListener("DOMContentLoaded", () => {
     const ui = new UI();
     const products = new Products();
-
     ui.setupApp();
 
-    products.getProducts().then(products => {
-        ui.displayProducts(products);
-        Storage.saveProducts(products);
-    }).then(() => {
-        ui.getBagButtons();
-        ui.cartLogic();
+    products
+    .getProducts()
+    .then(products => {
+      ui.displayProducts(products);
+      Storage.saveProducts(products);
+    })
+    .then(() => {
+      ui.getBagButtons();
+      ui.cartLogic();
     });
 });

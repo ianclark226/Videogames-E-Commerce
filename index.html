@@ -1,61 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Comfy House</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <title>Video Games</title>
-</head>
-<body>
-    <nav class="nav">
-        <div class="navbar-center">
-            <span class="nav-icon">
-                <i class="fas fa-bars"></i>
-            </span>
-            <img src="" alt="">
-            <div class="cart-btn">
-                <span class="nav-icon">
-                    <i class="fas fa-cart-plus"></i>
-                </span>
-                <div class="cart-items">0</div>
-            </div>
-        </div>
-    </nav>
 
-    <header class="hero">
-        <div class="banner">
-            <h1 class="banner-title">Video Game Collection</h1>
-            <button class="banner-btn">Shop Now</button>
-        </div>
-    </header>
-<section class="products">
-    <div class="section-title">
-        <h2>our products</h2>
-    </div>
-    <div class="products-center">
-       
-    </div>
-</section>
-<div class="car-overlay">
-    <div class="cart">
-        <span class="close-cart">
-            <i class="fas fa-window-close"></i>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="navbar-center">
+        <span class="nav-icon">
+          <i class="fas fa-bars"></i>
         </span>
+       
+        <div class="cart-btn">
+          <span class="nav-icon">
+            <i class="fas fa-cart-plus"></i>
+          </span>
+          <div class="cart-items">0</div>
+        </div>
+      </div>
+    </nav>
+    <!-- end of navbar -->
+    <!-- hero -->
+    <header class="hero">
+      <div class="banner">
+        <h1 class="banner-title">Video Game Collection</h1>
+        <button class="banner-btn">Shop Now</button>
+      </div>
+    </header>
+    <!-- end of hero -->
+
+    <!-- products -->
+    <section class="products">
+      <div class="section-title">
+        <h2>Our Products</h2>
+      </div>
+      <div class="products-center">
+        <!-- single product -->
+        <article class="product">
+          <div class="img-container">
+            <img
+              src="./images/game1.png"
+              alt="product"
+              class="product-img"
+            />
+            <button class="bag-btn" data-id="1">
+              <i class="fas fa-shopping-cart"></i>
+             Add to Bag
+            </button>
+          </div>
+
+          <h3>Super Mario 64</h3>
+          <h4>$12</h4>
+        </article>
+        <!-- end of single product -->
+      </div>
+    </section>
+    <!-- end of products -->
+    <!-- cart -->
+    <div class="cart-overlay">
+      <div class="cart">
+        <span class="close-cart"><i class="far fa-window-close"></i></span>
         <h2>Your Cart</h2>
         <div class="cart-content">
-            
+          <!-- cart item -->
+          <!-- <div class="cart-item">
+            <img src="./images/product-1.jpeg" alt="product" />
+            <div>
+              <h4>queen bed</h4>
+              <h5>$9.00</h5>
+              <span class="remove-item">remove</span>
+            </div>
+            <div>
+              <i class="fas fa-chevron-up"></i>
+              <p class="item-amount">
+                1
+              </p>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div> -->
+          <!-- cart item -->
+        </div>
+        <div class="cart-footer">
+          <h3>Your Total : $<span class="cart-total">0</span></h3>
+          <button class="clear-cart banner-btn">Clear Cart</button>
+        </div>
+      </div>
     </div>
-</div>
-<div class="cart-footer">
-    <h3>Your Total : $ <span class="cart-total">0</span></h3>
-    <button class="clear-cart banner-btn">Clear Cart</button>
-</div>
-<script src="script.js"></script>
-</body>
+    <!-- end of cart -->
+    <!-- contentful -->
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <!--  javascript -->
+    <script src="script.js"></script>
+  </body>
 </html>

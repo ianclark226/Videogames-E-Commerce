@@ -5,7 +5,7 @@
             "fields": {
                 "title": "Super Mario 64",
                 "price": 12,
-                "image": { "fields": { "file": { "url": "./images/game-1.jpeg"} } }
+                "image": { "fields": { "file": { "url": "./images/game1.png"} } }
             }
         },
         {
@@ -13,7 +13,7 @@
             "fields": {
                 "title": "Super Mario Sunshine",
                 "price": 18,
-                "image": { "fields": { "file": { "url": "./images/game-2.jpeg"} } }
+                "image": { "fields": { "file": { "url": "./images/game2.jpeg"} } }
             }
         },
         {

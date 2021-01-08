@@ -246,4 +246,3 @@ const client = contentful.createClient({
         ui.cartLogic();
       });
   });
-  
